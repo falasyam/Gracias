@@ -12,14 +12,14 @@
           text
           @click="makeHidden()"
         >
-          Delete!
+          Delete
         </v-btn>
         <v-btn
           color="green darken-1"
           text
           @click="hideDeleteDialog"
         >
-          NO. WAIT
+          Cancel
         </v-btn>
       </v-card-actions>
     </v-card>
@@ -46,7 +46,7 @@ export default {
           show: false
         })
         .then(() => {
-          this.$router.push('/')
+          this.$router.push('/admin')
         })
         .catch((error) => {
           console.error('Error on remove: ', error)

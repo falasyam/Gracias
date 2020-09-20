@@ -20,7 +20,7 @@
       </v-card-text>
       <v-card-text>
         <b>Writer: </b>
-        <span>{{ getWriter }}</span>
+        <span>Admin</span>
       </v-card-text>
       <div v-if="getUser" class="pa-3">
         <v-row class="fill-height" align="center" justify="end"  >
@@ -58,7 +58,6 @@ export default {
       'getTitle',
       'getContent',
       'getDate',
-      'getWriter',
       'getImgUrl',
       'getUser'
     ]),
@@ -79,7 +78,6 @@ export default {
       setTitle: types.SET_TITLE,
       setContent: types.SET_CONTENT,
       setDate: types.SET_DATE,
-      setWriter: types.SET_WRITER,
       setImgUrl: types.SET_IMG_URL }),
     update () {
       this.$router.push('/updater')
@@ -95,7 +93,6 @@ export default {
           this.setTitle(post.title)
           this.setContent(post.content)
           this.setDate(post.date.seconds)
-          this.setWriter(post.writer)
           this.setImgUrl(post.imgUrl)
         })
         .catch(error => {

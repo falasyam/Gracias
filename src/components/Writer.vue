@@ -1,26 +1,37 @@
 <template>
-  <v-col cols="12" md="7" offset-md="1">
-    <v-form>
-      <v-text-field
-        v-model="title"
-        label="Title"
-        required>
-      </v-text-field>
-      <file-uploader v-on:downloadURL="getDownloadUrl" v-bind:oldImgUrl="oldImgUrl" class="mb-4"/>
-    </v-form>
-    <vue-editor
-        id="writer"
-        v-model="content"
-        useCustomImageHandler
-        @imageAdded="handleImageAdded"
-    />
-    <v-row class="fill-height ma-3" align="center" justify="end">
-      <v-btn @click="savePost">save</v-btn>
-    </v-row>
-  </v-col>
+<section>
+  <BarAdmin/>
+  <section>
+    <v-container>
+      <v-row no-gutters>
+      <v-col cols="12" md="7" offset-md="1">
+        <div class="py-12"></div>
+        <v-form>
+          <v-text-field
+            v-model="title"
+            label="Title"
+            required>
+          </v-text-field>
+          <file-uploader v-on:downloadURL="getDownloadUrl" v-bind:oldImgUrl="oldImgUrl" class="mb-4"/>
+        </v-form>
+        <vue-editor
+            id="writer"
+            v-model="content"
+            useCustomImageHandler
+            @imageAdded="handleImageAdded"
+        />
+      </v-col>
+        <v-col cols="12" class="fill-height ma-3" align="center" justify="end">
+          <v-btn @click="savePost">save</v-btn>
+        </v-col>
+      </v-row>
+    </v-container>
+  </section>
+</section>
 </template>
 
 <script>
+import BarAdmin from '@/components/BarAdmin.vue'
 import { VueEditor } from 'vue2-editor'
 import { firestore } from '@/firebase/firestore'
 import { firestorage } from '@/firebase/firestorage'
@@ -30,6 +41,7 @@ import * as types from '@/vuex/mutation_types'
 
 export default {
   components: {
+    BarAdmin,
     VueEditor,
     FileUploader
   },
@@ -43,7 +55,7 @@ export default {
     if (this.getKey !== '') this.oldImgUrl = this.getImgUrl
   },
   computed: {
-    ...mapGetters(['getKey', 'getTitle', 'getContent', 'getImgUrl', 'getWriter', 'getUser']),
+    ...mapGetters(['getKey', 'getTitle', 'getContent', 'getImgUrl']),
     title: {
       get () {
         return this.getTitle
@@ -78,11 +90,10 @@ export default {
             seconds: new Date().getTime(),
             nanoseconds: 0
           },
-          writer: this.getUser.displayName || this.writer,
           imgUrl: this.imgUrl || this.getImgUrl,
           show: true
         })
-        .then(() => this.$router.push('/'))
+        .then(() => this.$router.push('/admin'))
         .catch((error) => {
           console.error(`Error adding document: ${error}`)
         })
@@ -92,7 +103,7 @@ export default {
     },
     handleImageAdded (file, Editor, cursorLocation) {
       let uploadTask = firestorage.ref('images/' + file.name).put(file)
-      uploadTask.on('state_changed', snapshot => {
+      uploadTask.on('state_changed', {
       }, error => {
         console.error(`Upload error occured: ${error}`)
       }, () => {

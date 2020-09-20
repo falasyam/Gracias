@@ -1,10 +1,10 @@
 export default {
   firebase: {
-    apiKey: 'AIzaSyBit-0Um-jkwfk9zxIoLEFtCgXxx3jyGJU',
-    authDomain: 'book-blog-with-largo.firebaseapp.com',
-    databaseURL: 'https://book-blog-with-largo.firebaseio.com',
-    projectId: 'book-blog-with-largo',
-    storageBucket: 'book-blog-with-largo.appspot.com',
-    messagingSenderId: '861459209119'
+    apiKey: 'AIzaSyCjT1hc4jAXpkMX-r3Zgm3U-430ufrukrw',
+    authDomain: 'shania-gracia.firebaseapp.com',
+    databaseURL: 'https://shania-gracia.firebaseio.com',
+    projectId: 'shania-gracia',
+    storageBucket: 'shania-gracia.appspot.com',
+    messagingSenderId: '301199011715'
   }
 }

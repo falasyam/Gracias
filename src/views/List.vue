@@ -47,16 +47,14 @@ export default {
       setTitle: types.SET_TITLE,
       setContent: types.SET_CONTENT,
       setDate: types.SET_DATE,
-      setWriter: types.SET_WRITER,
       setImgUrl: types.SET_IMG_URL }),
     viewPost (v) {
       this.setKey(v['.key'])
       this.setTitle(v.title)
       this.setContent(v.content)
       this.setDate(v.date.seconds)
-      this.setWriter(v.writer)
       this.setImgUrl(v.imgUrl)
-      this.$router.push({ name: 'post', params: { key: v['.key'] } })
+      this.$router.push({ name: 'edit', params: { key: v['.key'] } })
     },
     truncateString (v) {
       return _.truncate(v, {

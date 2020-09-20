@@ -1,8 +1,6 @@
-# book-blog
+# Gracias
 
-## It is working code on [my blog](https://book-blog-with-largo.firebaseapp.com/)
-
-![blog-demo](https://camo.githubusercontent.com/dad94416e821025057f0cca192bad27e26204ff9/68747470733a2f2f6c6f76656d65776974686f7574616c6c2e6769746875622e696f2f6173736574732f696d616765732f7675652d696d6167652d75706c6f61642d64656d6f2e676966)
+ [Demo](https://fanbase.shaniagracia.my.id)
 
 ## This blog is using
 

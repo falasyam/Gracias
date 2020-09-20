@@ -1,5 +1,5 @@
 <template>
   <div class="comments">
-    <vue-disqus shortname="book-blog-1"></vue-disqus>
+    <vue-disqus shortname="gracias-2"></vue-disqus>
   </div>
 </template>

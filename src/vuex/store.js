@@ -20,7 +20,6 @@ const state = {
   title: '',
   content: '',
   date: null,
-  writer: '',
   imgUrl: '',
   user: null
 }

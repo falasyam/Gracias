@@ -1,27 +1,17 @@
 <template>
-  <v-app light>
-    <v-content>
-      <v-container>
-        <v-row align="center">
-          <Nav></Nav>
-          <transition name="fade">
-            <router-view/>
-          </transition>
-        </v-row>
-      </v-container>
-    </v-content>
-    <v-footer>
-      <span>&copy; 2018</span>
-    </v-footer>
+  <v-app>    
+    <v-main>
+      <router-view/>
+    </v-main>
   </v-app>
 </template>
 
 <script>
-import Nav from '@/components/Nav'
 
 export default {
+  name: 'App',
   components: {
-    Nav
+    
   }
 }
 </script>

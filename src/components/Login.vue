@@ -1,14 +1,39 @@
 <template>
-  <v-col cols="12" md="7" offset-md="1">
-    <div class="login">
-      <h3>LOG IN</h3>
-      <v-form>
-        <v-text-field type="text" v-model="email" placeholder="Email"/>
-        <v-text-field type="password" v-model="password" placeholder="Password" v-on:keyup.enter="signIn"/>
-      </v-form>
-      <v-btn v-on:click="signIn" large>Login</v-btn>
-    </div>
-  </v-col>
+<v-main>
+  <v-container
+        fill-height
+      >
+        <v-row no-gutters
+        >
+          <v-col
+            cols="12"
+            align="center"
+            justify="center"
+          >
+          <div class="py-12"></div>
+            <v-card class="elevation-12 mx-auto" max-width="344">
+              <v-toolbar
+                color="purple"
+                dark
+                flat
+              >
+                <v-toolbar-title>Masuk</v-toolbar-title>
+              </v-toolbar>
+              <v-card-text>
+                <v-form>
+                  <v-text-field type="text" v-model="email" label="Email" prepend-icon="mdi-account"/>
+                  <v-text-field type="password" v-model="password" label="Password" v-on:keyup.enter="signIn" prepend-icon="mdi-lock"/>
+                </v-form>
+              </v-card-text>
+              <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn v-on:click="signIn" color="purple" dark>Login</v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-col>
+        </v-row>
+      </v-container>
+</v-main>
 </template>
 
 <script>
@@ -16,7 +41,7 @@ import { firebaseAuth } from '@/firebase/firebaseAuth'
 import { mapGetters } from 'vuex'
 
 export default {
-  name: 'login',
+  name: 'Login',
   data: function () {
     return {
       email: '',
@@ -29,20 +54,22 @@ export default {
   methods: {
     signIn () {
       firebaseAuth
-        .signInWithEmailAndPassword(this.email, this.password)
-        .then(
-          (user) => {},
-          (err) => {
-            alert('Oops. ' + err.message)
-          }
-        )
+        .signInWithEmailAndPassword(this.email, this.password).catch(function(error) {
+          // Handle Errors here.
+          var errorMessage = error.message;
+
+          window.alert("Error : " + errorMessage);
+
+          // ...
+        });
+
     }
   },
   watch: {
     user (user) {
-      if (user) this.$router.replace('/')
+      if (user) this.$router.replace('/admin')
     }
-  }
+  },
 }
 </script>
 

@@ -13,9 +13,6 @@ export default {
   [types.SET_DATE] (state, date) {
     state.date = date
   },
-  [types.SET_WRITER] (state, writer) {
-    state.writer = writer
-  },
   [types.SET_IMG_URL] (state, imgUrl) {
     state.imgUrl = imgUrl
   },
@@ -27,7 +24,6 @@ export default {
     state.title = ''
     state.content = ''
     state.date = null
-    state.writer = ''
     state.imgUrl = ''
   }
 }
